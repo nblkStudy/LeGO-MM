@@ -134,9 +134,6 @@ Here, we incentivize smooth actions with accelerated regularization $||a_t - a_{
 **Task 1:**  
 This task is essentially a combination of **Pick** and **Place**, involving the navigation, collision avoidance, pick, and place sub-skills. The reward function is the same as that of the **Pick** and **Place** skills. The trajectories of mobile manipulation for completing Task 1 are shown in Fig. 4. This task is characterized by mobile manipulation in a confined space. The robot should have good maneuverability for collision avoidance. The training curves of training the MM robotic system to complete Task 1 based on SSD are shown in Fig. 9 (b).
 
-![Illustrations of obstacle avoidance sub-skill in the Map-based MM System setup. The start/goal positions of the robot and all static obstacles are randomly initialized at the beginning of each episode.](./img/s_fig1.png)
-**Illustrations of obstacle avoidance sub-skill in the Map-based MM System setup. The start/goal positions of the robot and all static obstacles are randomly initialized at the beginning of each episode.**
-
 <figure>
   <img src="./img/s_fig1.png" alt="Illustrations of obstacle avoidance sub-skill in the Map-based MM System setup. The start/goal positions of the robot and all static obstacles are randomly initialized at the beginning of each episode.">
   <figcaption><i>Figure 1: Illustrations of obstacle avoidance sub-skill in the Map-based MM System setup. The start/goal positions of the robot and all static obstacles are randomly initialized at the beginning of each episode.</i></figcaption>
@@ -169,13 +166,33 @@ $$
 
 The training curves of training the MM robotic system to complete Task 2 based on SSD are shown in Fig. 9 (c). The demonstrations of the robot traversing a narrow area to pick an object and carefully opening the door are shown in Fig. 6.
 
+<figure>
+  <img src="./img/s_fig4.png" alt="Illustrations of pick and place sub-skills in the \textit{Map-based MM System} setup. (a) The robot is required to navigate to $Goal_1$ for picking up the object while avoiding obstacles. (b) The robot is asked to navigate to $Goal_2$ while avoiding obstacles and place the object at the specified position.">
+  <figcaption><i>Figure 2: Illustrations of pick and place sub-skills in the \textit{Map-based MM System} setup. (a) The robot is required to navigate to $Goal_1$ for picking up the object while avoiding obstacles. (b) The robot is asked to navigate to $Goal_2$ while avoiding obstacles and place the object at the specified position.</i></figcaption>
+</figure>
 
-![Illustrations of pick and place sub-skills in the Map-based MM System setup. (a) The robot is required to navigate to Goal₁ for picking up the object while avoiding obstacles. (b) The robot is asked to navigate to Goal₂ while avoiding obstacles and place the object at the specified position.](s_fig4.pdf)
+<figure>
+  <img src="./img/s_fig3.png" alt="Illustrations of open sub-skill in the \textit{Map-based MM System} setup. (a) The robot is required to navigate to the vicinity of the cabinet while avoiding static obstacles. (b) The robot is asked to open the door of the cabinet.">
+  <figcaption><i>Figure 3: Illustrations of open sub-skill in the \textit{Map-based MM System} setup. (a) The robot is required to navigate to the vicinity of the cabinet while avoiding static obstacles. (b) The robot is asked to open the door of the cabinet.</i></figcaption>
+</figure>
 
-![Illustrations of open sub-skill in the Map-based MM System setup. (a) The robot is required to navigate to the vicinity of the cabinet while avoiding static obstacles. (b) The robot is asked to open the door of the cabinet.](s_fig3.pdf)
+<figure>
+  <img src="./img/s_fig8.png" alt="The trajectories of mobile manipulation for completing Task 1. This task is characterized by mobile manipulation in a confined space. The robot should have good maneuverability for collision avoidance.">
+  <figcaption><i>Figure 4: The trajectories of mobile manipulation for
+completing Task 1. This task is characterized by mobile manipulation in a confined space. The robot should
+have good maneuverability for collision avoidance.</i></figcaption>
+</figure>
 
-![The trajectories of mobile manipulation for completing Task 1. This task is characterized by mobile manipulation in a confined space. The robot should have good maneuverability for collision avoidance.](s_fig8.pdf)
+<figure>
+  <img src="./img/s_fig6.png" alt="Task 2 requires the robot to move across different rooms to complete a pick-and-place task.
+In addition, the robot is asked to open a door before going from one room to another. This task is characterized by long-horizon and multi-
+skill mobile manipulation.">
+  <figcaption><i>Figure 5: Task 2 requires the robot to move across different rooms to complete a pick-and-place task.
+In addition, the robot is asked to open a door before going from one room to another. This task is characterized by long-horizon and multi-
+skill mobile manipulation.</i></figcaption>
+</figure>
 
-![Task 2 requires the robot to move across different rooms to complete a pick-and-place task. In addition, the robot is asked to open a door before going from one room to another. This task is characterized by long-horizon and multi-skill mobile manipulation.](s_fig6.pdf)
-
-![The demonstrations of the robot traversing a narrow area to pick an object and carefully opening the door in Task 2.](s_fig7.pdf)
+<figure>
+  <img src="./img/s_fig7.png" alt="The demonstrations of the robot traversing a narrow area to pick an object and carefully opening the door in Task 2.">
+  <figcaption><i>Figure 6: The demonstrations of the robot traversing a narrow area to pick an object and carefully opening the door in Task 2.</i></figcaption>
+</figure>
