@@ -1,10 +1,23 @@
-# LeGO-MM
-LeGO-MM: Learning Navigation for Goal-Oriented Mobile Manipulation via Hierarchical Policy Distillation
 ## Derivation of Policy Evaluation (Eq. (6)) in SPD
 
 In the SAC algorithm, the policy evaluation step aims to iteratively compute the soft Q-value of a policy $\hat{\pi}$, which relies on repeatedly applying a modified soft Bellman backup operator given by:
 
+$$
+\hat{Q}_{t+1}(o, a;g) = R^+(o, a;g) + \omega R(o, a;g) + \gamma \mathbb{E}_{o' \sim \mathcal{O}(\cdot|s,a)} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ \hat{Q}_t(o', a';g) - \hat{\alpha} \log \hat{\pi}(a' | o',g) \right] \right].
+$$
 
+We can then derive an update rule for the residual Q-function \cite{li2023residual} from the above modified soft Bellman backup operator based on Eq. (2) and (3) in the paper. Based on the residual Q-function $Q_{R^+,t+1}:=\hat{Q}_{t+1}-\omega Q^*$, we can derive the following:  
+
+$$
+\begin{aligned}
+Q_{R,t+1}(o,a;g) &= R^+(o,a;g) + \omega R(o,a;g) + \gamma \mathbb{E}_{o' \sim \mathcal{O}(\cdot \mid s,a)} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ \hat{Q}_t(o',a';g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right] - \omega Q^{*}(o,a;g), \\
+&= R^+(o,a;g) + \omega Q^{*}(o,a;g) - \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} - \omega Q^{*}(o,a;g) \\
+&\quad + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) + \omega' \log Z_{o'} - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right], \\
+&= R^+(o,a;g) - \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} + \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} \\
+&\quad + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right], \\
+&= R^+(o,a;g) + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right].
+\end{aligned}
+$$
 
 The derivation from Eq. (6a) to Eq. (6b) uses Eq. (2), $\hat{Q}_t = Q_{R^+,t} + \omega Q^*$, and Eq. (3):
 
@@ -144,3 +157,17 @@ n_{vel} = \frac{n_{ee}}{v_{ee,max}}
 $$
 
 The training curves of training the MM robotic system to complete Task 2 based on SSD are shown in Fig. 9 (c). The demonstrations of the robot traversing a narrow area to pick an object and carefully opening the door are shown in Fig. 6.
+
+---
+
+![Illustrations of obstacle avoidance sub-skill in the Map-based MM System setup. The start/goal positions of the robot and all static obstacles are randomly initialized at the beginning of each episode.](./img/s_fig1.png)
+
+![Illustrations of pick and place sub-skills in the Map-based MM System setup. (a) The robot is required to navigate to Goal₁ for picking up the object while avoiding obstacles. (b) The robot is asked to navigate to Goal₂ while avoiding obstacles and place the object at the specified position.](s_fig4.pdf)
+
+![Illustrations of open sub-skill in the Map-based MM System setup. (a) The robot is required to navigate to the vicinity of the cabinet while avoiding static obstacles. (b) The robot is asked to open the door of the cabinet.](s_fig3.pdf)
+
+![The trajectories of mobile manipulation for completing Task 1. This task is characterized by mobile manipulation in a confined space. The robot should have good maneuverability for collision avoidance.](s_fig8.pdf)
+
+![Task 2 requires the robot to move across different rooms to complete a pick-and-place task. In addition, the robot is asked to open a door before going from one room to another. This task is characterized by long-horizon and multi-skill mobile manipulation.](s_fig6.pdf)
+
+![The demonstrations of the robot traversing a narrow area to pick an object and carefully opening the door in Task 2.](s_fig7.pdf)
