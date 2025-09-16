@@ -196,3 +196,18 @@ skill mobile manipulation.</i></figcaption>
   <img src="./img/s_fig7.png" alt="The demonstrations of the robot traversing a narrow area to pick an object and carefully opening the door in Task 2.">
   <figcaption><i>Figure 6: The demonstrations of the robot traversing a narrow area to pick an object and carefully opening the door in Task 2.</i></figcaption>
 </figure>
+
+## Pseudocode and Training Curves
+
+The training curves for learning Task 1 and Task 2 using SSD in the *Map-based MM System* setup are shown in **Figure 9**.  
+The training and evaluation curves for generalizing Task 1 to Task 2 using SPD are shown in **Figure 10**.
+
+<figure>
+  <img src="./img/s_fig9.png" alt="Training curves of SSD in the map-based MM system setup. (a) corresponds to the scene shown in Fig. 1. (b) corresponds to the scene shown in Fig. 5. (c) corresponds to the scene shown in Fig. 6.">
+  <figcaption><i>Figure 7: Training curves of SSD in the map-based MM system setup. (a) corresponds to the scene shown in Fig. 1. (b) corresponds to the scene shown in Fig. 5. (c) corresponds to the scene shown in Fig. 6.</i></figcaption>
+</figure>
+
+<figure>
+  <img src="./img/s_fig10.png" alt="(a) Training curves for generalizing Task 1 to Task 2 using SPD in the \textit{map-based MM system} setup. (b) Evaluation was done at 500 episodes intervals during training.">
+  <figcaption><i>Figure 8: (a) Training curves for generalizing Task 1 to Task 2 using SPD in the \textit{map-based MM system} setup. (b) Evaluation was done at 500 episodes intervals during training.</i></figcaption>
+</figure>
