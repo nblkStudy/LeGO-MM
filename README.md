@@ -12,8 +12,8 @@ We can then derive an update rule for the residual Q-function from the above mod
 
 $$
 \begin{aligned}
-Q_{R,t+1}(o,a;g) &= R^+(o,a;g) + \omega R(o,a;g) + \gamma \mathbb{E}_{o' \sim \mathcal{O}(\cdot \mid s,a)} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ \hat{Q}_t(o',a';g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right] - \omega Q^*(o,a;g), \\
-&= R^+(o,a;g) + \omega Q^*(o,a;g) - \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} - \omega Q^*(o,a;g) \\
+Q_{R,t+1}(o,a;g) &= R^+(o,a;g) + \omega R(o,a;g) + \gamma \mathbb{E}_{o' \sim \mathcal{O}(\cdot \mid s,a)} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ \hat{Q}_t(o',a';g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right] - \omega Q^{*}(o,a;g), \\
+&= R^+(o,a;g) + \omega Q^{*}(o,a;g) - \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} - \omega Q^{*}(o,a;g) \\
 &\quad + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) + \omega' \log Z_{o'} - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right], \\
 &= R^+(o,a;g) - \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} + \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} \\
 &\quad + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right], \\
