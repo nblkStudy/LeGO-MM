@@ -1,3 +1,6 @@
+# LeGO-MM
+LeGO-MM: Learning Navigation for Goal-Oriented Mobile Manipulation via Hierarchical Policy Distillation
+
 ## Derivation of Policy Evaluation (Eq. (6)) in SPD
 
 In the SAC algorithm, the policy evaluation step aims to iteratively compute the soft Q-value of a policy $\hat{\pi}$, which relies on repeatedly applying a modified soft Bellman backup operator given by:
