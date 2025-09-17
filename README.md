@@ -11,10 +11,7 @@ $$
 
 We can then derive an update rule for the residual Q-function \cite{li2023residual} from the above modified soft Bellman backup operator based on Eq. (2) and (3) in the paper. Based on the residual Q-function $Q_{R^+,t+1}:=\hat{Q}_{t+1}-\omega Q^*$, we can derive the following:  
 
-<figure>
-  <img src="./img/equ1.png" alt="equ1">
-</figure>
-![image](./img/equ1.png)
+![fig1 in paper](./img/equ1.png)
 
 The derivation from Eq. (6a) to Eq. (6b) uses Eq. (2), $\hat{Q}_t = Q_{R^+,t} + \omega Q^*$, and Eq. (3):
 
