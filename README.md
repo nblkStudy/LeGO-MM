@@ -30,7 +30,12 @@ $$
 
 The derivation from Eq. (6a) to Eq. (6b) uses Eq. (2), $\hat{Q}_t = Q_{R^+,t} + \omega Q^*$, and Eq. (3):
 
-![fig2 in paper](./img/equ2.png)
+$$
+\begin{aligned}
+ Q^*(o, a;g) &= R(o, a;g) +\gamma \mathbb{E}_{o' \sim \mathcal{O}(\cdot | s, a)} \left[ \alpha \log \int_{\mathcal{A}} \exp \left( \tfrac{1}{\alpha} Q^*(o', a';g) \right) da' \right], \\
+ &= R(o, a;g) + \omega' \gamma \mathbb{E}_{o'} \log Z_{o'}.
+\end{aligned}
+$$
 
 $$
 Q^*(o', a';g) = \alpha \log \pi(a' | o',g) + \alpha \log Z_{o'}.
