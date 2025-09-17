@@ -15,9 +15,7 @@ We can then derive an update rule for the residual Q-function \cite{li2023residu
 
 The derivation from Eq. (6a) to Eq. (6b) uses Eq. (2), $\hat{Q}_t = Q_{R^+,t} + \omega Q^*$, and Eq. (3):
 
-<figure>
-  <img src="./img/equ2.png" alt="equ1">
-</figure>
+![fig2 in paper](./img/equ2.png)
 
 $$
 Q^*(o', a';g) = \alpha \log \pi(a' | o',g) + \alpha \log Z_{o'}.
@@ -159,43 +157,29 @@ The training curves of training the MM robotic system to complete Task 2 based o
   <figcaption><i>Figure 2: Illustrations of pick and place sub-skills in the \textit{Map-based MM System} setup. (a) The robot is required to navigate to $Goal_1$ for picking up the object while avoiding obstacles. (b) The robot is asked to navigate to $Goal_2$ while avoiding obstacles and place the object at the specified position.</i></figcaption>
 </figure>
 
-<figure>
-  <img src="./img/s_fig3.png" alt="Illustrations of open sub-skill in the \textit{Map-based MM System} setup. (a) The robot is required to navigate to the vicinity of the cabinet while avoiding static obstacles. (b) The robot is asked to open the door of the cabinet.">
-  <figcaption><i>Figure 3: Illustrations of open sub-skill in the \textit{Map-based MM System} setup. (a) The robot is required to navigate to the vicinity of the cabinet while avoiding static obstacles. (b) The robot is asked to open the door of the cabinet.</i></figcaption>
-</figure>
+![fig3 in paper](./img/s_fig3.png)
+Figure 3: Illustrations of open sub-skill in the \textit{Map-based MM System} setup. (a) The robot is required to navigate to the vicinity of the cabinet while avoiding static obstacles. (b) The robot is asked to open the door of the cabinet.
 
-<figure>
-  <img src="./img/s_fig8.png" alt="The trajectories of mobile manipulation for completing Task 1. This task is characterized by mobile manipulation in a confined space. The robot should have good maneuverability for collision avoidance.">
-  <figcaption><i>Figure 4: The trajectories of mobile manipulation for
+![fig4 in paper](./img/s_fig8.png)
+Figure 4: The trajectories of mobile manipulation for
 completing Task 1. This task is characterized by mobile manipulation in a confined space. The robot should
-have good maneuverability for collision avoidance.</i></figcaption>
-</figure>
+have good maneuverability for collision avoidance.
 
-<figure>
-  <img src="./img/s_fig6.png" alt="Task 2 requires the robot to move across different rooms to complete a pick-and-place task.
+![fig5 in paper](./img/s_fig6.png)
+Figure 5: Task 2 requires the robot to move across different rooms to complete a pick-and-place task.
 In addition, the robot is asked to open a door before going from one room to another. This task is characterized by long-horizon and multi-
-skill mobile manipulation.">
-  <figcaption><i>Figure 5: Task 2 requires the robot to move across different rooms to complete a pick-and-place task.
-In addition, the robot is asked to open a door before going from one room to another. This task is characterized by long-horizon and multi-
-skill mobile manipulation.</i></figcaption>
-</figure>
+skill mobile manipulation.
 
-<figure>
-  <img src="./img/s_fig7.png" alt="The demonstrations of the robot traversing a narrow area to pick an object and carefully opening the door in Task 2.">
-  <figcaption><i>Figure 6: The demonstrations of the robot traversing a narrow area to pick an object and carefully opening the door in Task 2.</i></figcaption>
-</figure>
+![fig6 in paper](./img/s_fig7.png)
+Figure 6: The demonstrations of the robot traversing a narrow area to pick an object and carefully opening the door in Task 2.
 
 ## Pseudocode and Training Curves
 
 The training curves for learning Task 1 and Task 2 using SSD in the *Map-based MM System* setup are shown in **Figure 9**.  
 The training and evaluation curves for generalizing Task 1 to Task 2 using SPD are shown in **Figure 10**.
 
-<figure>
-  <img src="./img/s_fig9.png" alt="Training curves of SSD in the map-based MM system setup. (a) corresponds to the scene shown in Fig. 1. (b) corresponds to the scene shown in Fig. 5. (c) corresponds to the scene shown in Fig. 6.">
-  <figcaption><i>Figure 7: Training curves of SSD in the map-based MM system setup. (a) corresponds to the scene shown in Fig. 1. (b) corresponds to the scene shown in Fig. 5. (c) corresponds to the scene shown in Fig. 6.</i></figcaption>
-</figure>
+![fig7 in paper](./img/s_fig7.png)
+Figure 7: Training curves of SSD in the map-based MM system setup. (a) corresponds to the scene shown in Fig. 1. (b) corresponds to the scene shown in Fig. 5. (c) corresponds to the scene shown in Fig. 6.
 
-<figure>
-  <img src="./img/s_fig10.png" alt="(a) Training curves for generalizing Task 1 to Task 2 using SPD in the \textit{map-based MM system} setup. (b) Evaluation was done at 500 episodes intervals during training.">
-  <figcaption><i>Figure 8: (a) Training curves for generalizing Task 1 to Task 2 using SPD in the \textit{map-based MM system} setup. (b) Evaluation was done at 500 episodes intervals during training.</i></figcaption>
-</figure>
+![fig8 in paper](./img/s_fig7.png)
+Figure 8: (a) Training curves for generalizing Task 1 to Task 2 using SPD in the \textit{map-based MM system} setup. (b) Evaluation was done at 500 episodes intervals during training.
