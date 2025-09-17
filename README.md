@@ -1,66 +1,18 @@
 # LeGO-MM
 LeGO-MM: Learning Navigation for Goal-Oriented Mobile Manipulation via Hierarchical Policy Distillation
 
-## Derivation of Policy Evaluation (Eq. (6)) in SPD
+## Pseudocode and Training Curves
 
-In the SAC algorithm, the policy evaluation step aims to iteratively compute the soft Q-value of a policy $\hat{\pi}$, which relies on repeatedly applying a modified soft Bellman backup operator given by:
+The training curves for learning Task 1 and Task 2 using SSD in the Map-based MM System setup are shown in **Figure 9**.  
+The training and evaluation curves for generalizing Task 1 to Task 2 using SPD are shown in **Figure 10**.
 
-$$
-\hat{Q}_{t+1}(o, a;g) = R^+(o, a;g) + \omega R(o, a;g) + \gamma \mathbb{E}_{o' \sim \mathcal{O}(\cdot|s,a)} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ \hat{Q}_t(o', a';g) - \hat{\alpha} \log \hat{\pi}(a' | o',g) \right] \right]. \tag{7}
-$$
+![fig7 in paper](./img/s_fig9.png)
 
-We can then derive an update rule for the residual Q-function \cite{li2023residual} from the above modified soft Bellman backup operator based on Eq. (2) and (3) in the paper. Based on the residual Q-function $Q_{R^+,t+1}:=\hat{Q}_{t+1}-\omega Q^*$, we can derive the following:  
+Figure 7: Training curves of SSD in the map-based MM system setup. (a) corresponds to the scene shown in Fig. 1. (b) corresponds to the scene shown in Fig. 5. (c) corresponds to the scene shown in Fig. 6.
 
-$$
-\begin{aligned}
-Q_{R,t+1}(o,a;g) &= R^+(o,a;g) + \omega R(o,a;g) + \gamma \mathbb{E}_{o' \sim \mathcal{O}(\cdot \mid s,a)} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ \hat{Q}_t(o',a';g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right] - \omega Q^{*}(o,a;g) \tag{6a} 
-\end{aligned}
-$$
-$$
-\begin{aligned}
-&= R^+(o,a;g) + \omega Q^{*}(o,a;g) - \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} - \omega Q^{*}(o,a;g) \\
-&\quad + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) + \omega' \log Z_{o'} - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right], \tag{6b}
-\end{aligned}
-$$
-$$
-\begin{aligned}
-&= R^+(o,a;g) - \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} + \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} \\
-&\quad + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right], \tag{6c}
-\end{aligned}
-$$
-$$
-\begin{aligned}
-&= R^+(o,a;g) + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right]. \tag{6d}
-\end{aligned}
-$$
+![fig8 in paper](./img/s_fig10.png)
 
-The derivation from Eq. (6a) to Eq. (6b) uses Eq. (2), $\hat{Q}_t = Q_{R^+,t} + \omega Q^*$, and Eq. (3):
-
-$$
-\begin{aligned}
- Q^*(o, a;g) &= R(o, a;g) +\gamma \mathbb{E}_{o' \sim \mathcal{O}(\cdot | s, a)} \left[ \alpha \log \int_{\mathcal{A}} \exp \left( \tfrac{1}{\alpha} Q^*(o', a';g) \right) da' \right], \tag{2a}
- \end{aligned}
-$$
-$$
- \begin{aligned}
- &= R(o, a;g) + \omega' \gamma \mathbb{E}_{o'} \log Z_{o'}. \tag{2b}
-\end{aligned}
-$$
-
-$$
-Q^*(o', a';g) = \alpha \log \pi(a' | o',g) + \alpha \log Z_{o'}. \tag{3}
-$$
-
-Here $Z_{o'} = \int_{\mathcal{A}} \exp \left( \tfrac{1}{\alpha} Q^*(o',a';g) \right) da'$, as described in the Preliminaries section of the paper.  
-
-To obtain Eq. (6c), note that $Z_{o'}$ is not a function of $a'$, so we can write the last term of Eq. (6b) as:
-
-$$
-\begin{aligned}
-&\gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a'\sim \hat{\pi}} \Big[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a'|o',g) + \omega' \log Z_{o'} - \hat{\alpha} \log \hat{\pi}(a'|o',g) \Big] \right] \\
-&= \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a'\sim \hat{\pi}} \Big[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a'|o',g) - \hat{\alpha} \log \hat{\pi}(a'|o',g) \Big] \right]
-\end{aligned}
-$$
+Figure 8: (a) Training curves for generalizing Task 1 to Task 2 using SPD in the \textit{map-based MM system} setup. (b) Evaluation was done at 500 episodes intervals during training.
 
 ## More Method Details
 
@@ -183,11 +135,11 @@ The training curves of training the MM robotic system to complete Task 2 based o
 
 ![fig2 in paper](./img/s_fig4.png)
 
-Figure 2: Illustrations of pick and place sub-skills in the \textit{Map-based MM System} setup. (a) The robot is required to navigate to $Goal_1$ for picking up the object while avoiding obstacles. (b) The robot is asked to navigate to $Goal_2$ while avoiding obstacles and place the object at the specified position.
+Figure 2: Illustrations of pick and place sub-skills in the Map-based MM System setup. (a) The robot is required to navigate to $Goal_1$ for picking up the object while avoiding obstacles. (b) The robot is asked to navigate to $Goal_2$ while avoiding obstacles and place the object at the specified position.
 
 ![fig3 in paper](./img/s_fig3.png)
 
-Figure 3: Illustrations of open sub-skill in the \textit{Map-based MM System} setup. (a) The robot is required to navigate to the vicinity of the cabinet while avoiding static obstacles. (b) The robot is asked to open the door of the cabinet.
+Figure 3: Illustrations of open sub-skill in the Map-based MM System setup. (a) The robot is required to navigate to the vicinity of the cabinet while avoiding static obstacles. (b) The robot is asked to open the door of the cabinet.
 
 ![fig4 in paper](./img/s_fig8.png)
 
@@ -205,15 +157,65 @@ skill mobile manipulation.
 
 Figure 6: The demonstrations of the robot traversing a narrow area to pick an object and carefully opening the door in Task 2.
 
-## Pseudocode and Training Curves
+## Derivation of Policy Evaluation (Eq. (6)) in SPD
 
-The training curves for learning Task 1 and Task 2 using SSD in the *Map-based MM System* setup are shown in **Figure 9**.  
-The training and evaluation curves for generalizing Task 1 to Task 2 using SPD are shown in **Figure 10**.
+In the SAC algorithm, the policy evaluation step aims to iteratively compute the soft Q-value of a policy $\hat{\pi}$, which relies on repeatedly applying a modified soft Bellman backup operator given by:
 
-![fig7 in paper](./img/s_fig9.png)
+$$
+\hat{Q}_{t+1}(o, a;g) = R^+(o, a;g) + \omega R(o, a;g) + \gamma \mathbb{E}_{o' \sim \mathcal{O}(\cdot|s,a)} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ \hat{Q}_t(o', a';g) - \hat{\alpha} \log \hat{\pi}(a' | o',g) \right] \right]. \tag{7}
+$$
 
-Figure 7: Training curves of SSD in the map-based MM system setup. (a) corresponds to the scene shown in Fig. 1. (b) corresponds to the scene shown in Fig. 5. (c) corresponds to the scene shown in Fig. 6.
+We can then derive an update rule for the residual Q-function \cite{li2023residual} from the above modified soft Bellman backup operator based on Eq. (2) and (3) in the paper. Based on the residual Q-function $Q_{R^+,t+1}:=\hat{Q}_{t+1}-\omega Q^*$, we can derive the following:  
 
-![fig8 in paper](./img/s_fig10.png)
+$$
+\begin{aligned}
+Q_{R,t+1}(o,a;g) &= R^+(o,a;g) + \omega R(o,a;g) + \gamma \mathbb{E}_{o' \sim \mathcal{O}(\cdot \mid s,a)} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ \hat{Q}_t(o',a';g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right] - \omega Q^{*}(o,a;g) \tag{6a} 
+\end{aligned}
+$$
+$$
+\begin{aligned}
+&= R^+(o,a;g) + \omega Q^{*}(o,a;g) - \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} - \omega Q^{*}(o,a;g) \\
+&\quad + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) + \omega' \log Z_{o'} - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right], \tag{6b}
+\end{aligned}
+$$
+$$
+\begin{aligned}
+&= R^+(o,a;g) - \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} + \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} \\
+&\quad + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right], \tag{6c}
+\end{aligned}
+$$
+$$
+\begin{aligned}
+&= R^+(o,a;g) + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right]. \tag{6d}
+\end{aligned}
+$$
 
-Figure 8: (a) Training curves for generalizing Task 1 to Task 2 using SPD in the \textit{map-based MM system} setup. (b) Evaluation was done at 500 episodes intervals during training.
+The derivation from Eq. (6a) to Eq. (6b) uses Eq. (2), $\hat{Q}_t = Q_{R^+,t} + \omega Q^*$, and Eq. (3):
+
+$$
+\begin{aligned}
+ Q^*(o, a;g) &= R(o, a;g) +\gamma \mathbb{E}_{o' \sim \mathcal{O}(\cdot | s, a)} \left[ \alpha \log \int_{\mathcal{A}} \exp \left( \tfrac{1}{\alpha} Q^*(o', a';g) \right) da' \right], \tag{2a}
+ \end{aligned}
+$$
+$$
+ \begin{aligned}
+ &= R(o, a;g) + \omega' \gamma \mathbb{E}_{o'} \log Z_{o'}. \tag{2b}
+\end{aligned}
+$$
+
+$$
+Q^*(o', a';g) = \alpha \log \pi(a' | o',g) + \alpha \log Z_{o'}. \tag{3}
+$$
+
+Here $Z_{o'} = \int_{\mathcal{A}} \exp \left( \tfrac{1}{\alpha} Q^*(o',a';g) \right) da'$, as described in the Preliminaries section of the paper.  
+
+To obtain Eq. (6c), note that $Z_{o'}$ is not a function of $a'$, so we can write the last term of Eq. (6b) as:
+
+$$
+\begin{aligned}
+&\gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a'\sim \hat{\pi}} \Big[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a'|o',g) + \omega' \log Z_{o'} - \hat{\alpha} \log \hat{\pi}(a'|o',g) \Big] \right] \\
+&= \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a'\sim \hat{\pi}} \Big[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a'|o',g) - \hat{\alpha} \log \hat{\pi}(a'|o',g) \Big] \right]
+\end{aligned}
+$$
+
+
