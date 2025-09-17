@@ -14,6 +14,7 @@ We can then derive an update rule for the residual Q-function \cite{li2023residu
 <figure>
   <img src="./img/equ1.png" alt="equ1">
 </figure>
+![image](./img/equ1.png)
 
 The derivation from Eq. (6a) to Eq. (6b) uses Eq. (2), $\hat{Q}_t = Q_{R^+,t} + \omega Q^*$, and Eq. (3):
 
