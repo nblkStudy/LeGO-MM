@@ -13,12 +13,12 @@ We can then derive an update rule for the residual Q-function \cite{li2023residu
 
 $$
 \begin{aligned}
-Q_{R,t+1}(o,a;g) &= R^+(o,a;g) + \omega R(o,a;g) + \gamma \mathbb{E}_{o' \sim \mathcal{O}(\cdot \mid s,a)} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ \hat{Q}_t(o',a';g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right] - \omega Q^{*}(o,a;g),(6a) \\
+Q_{R,t+1}(o,a;g) &= R^+(o,a;g) + \omega R(o,a;g) + \gamma \mathbb{E}_{o' \sim \mathcal{O}(\cdot \mid s,a)} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ \hat{Q}_t(o',a';g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right] - \omega Q^{*}(o,a;g), \tag{6a} \\
 &= R^+(o,a;g) + \omega Q^{*}(o,a;g) - \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} - \omega Q^{*}(o,a;g) \\
-&\quad + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) + \omega' \log Z_{o'} - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right], (6b)\\
+&\quad + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) + \omega' \log Z_{o'} - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right], \tag{6b}\\
 &= R^+(o,a;g) - \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} + \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} \\
-&\quad + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right], (6c)\\
-&= R^+(o,a;g) + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right].(6d)
+&\quad + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right], \tag{6c}\\
+&= R^+(o,a;g) + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right]. \tag{6d}
 \end{aligned}
 $$
 
@@ -26,13 +26,13 @@ The derivation from Eq. (6a) to Eq. (6b) uses Eq. (2), $\hat{Q}_t = Q_{R^+,t} + 
 
 $$
 \begin{aligned}
- Q^*(o, a;g) &= R(o, a;g) +\gamma \mathbb{E}_{o' \sim \mathcal{O}(\cdot | s, a)} \left[ \alpha \log \int_{\mathcal{A}} \exp \left( \tfrac{1}{\alpha} Q^*(o', a';g) \right) da' \right], \\
- &= R(o, a;g) + \omega' \gamma \mathbb{E}_{o'} \log Z_{o'}.
+ Q^*(o, a;g) &= R(o, a;g) +\gamma \mathbb{E}_{o' \sim \mathcal{O}(\cdot | s, a)} \left[ \alpha \log \int_{\mathcal{A}} \exp \left( \tfrac{1}{\alpha} Q^*(o', a';g) \right) da' \right], \tag{2a}\\
+ &= R(o, a;g) + \omega' \gamma \mathbb{E}_{o'} \log Z_{o'}. \tag{2b}
 \end{aligned}
 $$
 
 $$
-Q^*(o', a';g) = \alpha \log \pi(a' | o',g) + \alpha \log Z_{o'}.
+Q^*(o', a';g) = \alpha \log \pi(a' | o',g) + \alpha \log Z_{o'}. \tag{3}
 $$
 
 Here $Z_{o'} = \int_{\mathcal{A}} \exp \left( \tfrac{1}{\alpha} Q^*(o',a';g) \right) da'$, as described in the Preliminaries section of the paper.  
