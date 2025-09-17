@@ -17,6 +17,10 @@ $$
 \begin{aligned} Q_{R, t+1}(o, a ; g)= & R^{+}(o, a ; g)+\omega Q^*(o, a ; g)-\omega^{\prime} \gamma \mathbb{E}_{o^{\prime}} \log Z_{o^{\prime}} -\omega Q^*(o, a ; g) \\ \end{aligned}
 $$
 
+$$
+\begin{aligned} Q_{R, t+1}(o, a ; g)= & R^{+}(o, a ; g)+\omega Q^*(o, a ; g)-\omega^{\prime} \gamma \mathbb{E}_{o^{\prime}} \log Z_{o^{\prime}} \\ \end{aligned}
+$$
+
 The derivation from Eq. (6a) to Eq. (6b) uses Eq. (2), $\hat{Q}_t = Q_{R^+,t} + \omega Q^*$, and Eq. (3):
 
 ![fig2 in paper](./img/equ2.png)
