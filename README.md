@@ -11,12 +11,6 @@ $$
 
 We can then derive an update rule for the residual Q-function \cite{li2023residual} from the above modified soft Bellman backup operator based on Eq. (2) and (3) in the paper. Based on the residual Q-function $Q_{R^+,t+1}:=\hat{Q}_{t+1}-\omega Q^*$, we can derive the following:  
 
-![fig1 in paper](./img/equ1.png)
-
-$$
-\begin{aligned} Q_{R, t+1}(o, a ; g)= & R^{+}(o, a ; g)+\omega Q^*(o, a ; g)-\omega^{\prime} \gamma \mathbb{E}_{o^{\prime}} \log Z_{o^{\prime}} -\omega Q^*(o, a ; g) \\ \end{aligned}
-$$
-
 $$
 \begin{aligned}
 Q_{R,t+1}(o,a;g) &= R^+(o,a;g) + \omega R(o,a;g) + \gamma \mathbb{E}_{o' \sim \mathcal{O}(\cdot \mid s,a)} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ \hat{Q}_t(o',a';g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right] - \omega Q^{*}(o,a;g), \\
