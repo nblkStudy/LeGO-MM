@@ -134,10 +134,9 @@ Here, we incentivize smooth actions with accelerated regularization $||a_t - a_{
 **Task 1:**  
 This task is essentially a combination of **Pick** and **Place**, involving the navigation, collision avoidance, pick, and place sub-skills. The reward function is the same as that of the **Pick** and **Place** skills. The trajectories of mobile manipulation for completing Task 1 are shown in Fig. 4. This task is characterized by mobile manipulation in a confined space. The robot should have good maneuverability for collision avoidance. The training curves of training the MM robotic system to complete Task 1 based on SSD are shown in Fig. 9 (b).
 
-<figure>
-  <img src="./img/s_fig1.png" alt="Illustrations of obstacle avoidance sub-skill in the Map-based MM System setup. The start/goal positions of the robot and all static obstacles are randomly initialized at the beginning of each episode.">
-  <figcaption><i>Figure 1: Illustrations of obstacle avoidance sub-skill in the Map-based MM System setup. The start/goal positions of the robot and all static obstacles are randomly initialized at the beginning of each episode.</i></figcaption>
-</figure>
+![fig1 in paper](./img/s_fig1.png)
+
+Figure 1: Illustrations of obstacle avoidance sub-skill in the Map-based MM System setup. The start/goal positions of the robot and all static obstacles are randomly initialized at the beginning of each episode.
 
 **Task 2:**  
 Unlike Task 1, this task requires the robot to move across different rooms to complete a pick-and-place task. In addition, the robot is asked to open a door before going from one room to another. Therefore, this task involves pick, place, navigation, collision avoidance, and open sub-skills, as shown in Fig. 5. This task is characterized by long-horizon and multi-skill mobile manipulation. The robot needs to move efficiently through the rooms and open the door with few IK failures. Therefore, we further improve the per-time-step reward, as follows:
@@ -166,10 +165,9 @@ $$
 
 The training curves of training the MM robotic system to complete Task 2 based on SSD are shown in Fig. 9 (c). The demonstrations of the robot traversing a narrow area to pick an object and carefully opening the door are shown in Fig. 6.
 
-<figure>
-  <img src="./img/s_fig4.png" alt="Illustrations of pick and place sub-skills in the \textit{Map-based MM System} setup. (a) The robot is required to navigate to $Goal_1$ for picking up the object while avoiding obstacles. (b) The robot is asked to navigate to $Goal_2$ while avoiding obstacles and place the object at the specified position.">
-  <figcaption><i>Figure 2: Illustrations of pick and place sub-skills in the \textit{Map-based MM System} setup. (a) The robot is required to navigate to $Goal_1$ for picking up the object while avoiding obstacles. (b) The robot is asked to navigate to $Goal_2$ while avoiding obstacles and place the object at the specified position.</i></figcaption>
-</figure>
+![fig2 in paper](./img/s_fig4.png)
+
+Figure 2: Illustrations of pick and place sub-skills in the \textit{Map-based MM System} setup. (a) The robot is required to navigate to $Goal_1$ for picking up the object while avoiding obstacles. (b) The robot is asked to navigate to $Goal_2$ while avoiding obstacles and place the object at the specified position.
 
 ![fig3 in paper](./img/s_fig3.png)
 
