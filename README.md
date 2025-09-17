@@ -12,6 +12,9 @@ $$
 We can then derive an update rule for the residual Q-function \cite{li2023residual} from the above modified soft Bellman backup operator based on Eq. (2) and (3) in the paper. Based on the residual Q-function $Q_{R^+,t+1}:=\hat{Q}_{t+1}-\omega Q^*$, we can derive the following:  
 
 ![fig1 in paper](./img/equ1.png)
+<p align="center">
+  <img src="./img/equ1.png" alt="fig8 in paper" width="500"/>
+</p>
 
 The derivation from Eq. (6a) to Eq. (6b) uses Eq. (2), $\hat{Q}_t = Q_{R^+,t} + \omega Q^*$, and Eq. (3):
 
@@ -171,6 +174,7 @@ In addition, the robot is asked to open a door before going from one room to ano
 skill mobile manipulation.
 
 ![fig6 in paper](./img/s_fig7.png)
+
 Figure 6: The demonstrations of the robot traversing a narrow area to pick an object and carefully opening the door in Task 2.
 
 ## Pseudocode and Training Curves
@@ -178,8 +182,11 @@ Figure 6: The demonstrations of the robot traversing a narrow area to pick an ob
 The training curves for learning Task 1 and Task 2 using SSD in the *Map-based MM System* setup are shown in **Figure 9**.  
 The training and evaluation curves for generalizing Task 1 to Task 2 using SPD are shown in **Figure 10**.
 
+<p align="center">
 ![fig7 in paper](./img/s_fig7.png)
+
 Figure 7: Training curves of SSD in the map-based MM system setup. (a) corresponds to the scene shown in Fig. 1. (b) corresponds to the scene shown in Fig. 5. (c) corresponds to the scene shown in Fig. 6.
 
 ![fig8 in paper](./img/s_fig7.png)
+
 Figure 8: (a) Training curves for generalizing Task 1 to Task 2 using SPD in the \textit{map-based MM system} setup. (b) Evaluation was done at 500 episodes intervals during training.
