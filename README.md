@@ -196,11 +196,10 @@ Figure 6: The demonstrations of the robot traversing a narrow area to pick an ob
 The training curves for learning Task 1 and Task 2 using SSD in the *Map-based MM System* setup are shown in **Figure 9**.  
 The training and evaluation curves for generalizing Task 1 to Task 2 using SPD are shown in **Figure 10**.
 
-<p align="center">
-![fig7 in paper](./img/s_fig7.png)
+![fig7 in paper](./img/s_fig9.png)
 
 Figure 7: Training curves of SSD in the map-based MM system setup. (a) corresponds to the scene shown in Fig. 1. (b) corresponds to the scene shown in Fig. 5. (c) corresponds to the scene shown in Fig. 6.
 
-![fig8 in paper](./img/s_fig7.png)
+![fig8 in paper](./img/s_fig10.png)
 
 Figure 8: (a) Training curves for generalizing Task 1 to Task 2 using SPD in the \textit{map-based MM system} setup. (b) Evaluation was done at 500 episodes intervals during training.
