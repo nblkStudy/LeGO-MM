@@ -12,9 +12,6 @@ $$
 We can then derive an update rule for the residual Q-function \cite{li2023residual} from the above modified soft Bellman backup operator based on Eq. (2) and (3) in the paper. Based on the residual Q-function $Q_{R^+,t+1}:=\hat{Q}_{t+1}-\omega Q^*$, we can derive the following:  
 
 ![fig1 in paper](./img/equ1.png)
-<p align="center">
-  <img src="./img/equ1.png" alt="fig8 in paper" width="500"/>
-</p>
 
 The derivation from Eq. (6a) to Eq. (6b) uses Eq. (2), $\hat{Q}_t = Q_{R^+,t} + \omega Q^*$, and Eq. (3):
 
@@ -161,14 +158,17 @@ The training curves of training the MM robotic system to complete Task 2 based o
 </figure>
 
 ![fig3 in paper](./img/s_fig3.png)
+
 Figure 3: Illustrations of open sub-skill in the \textit{Map-based MM System} setup. (a) The robot is required to navigate to the vicinity of the cabinet while avoiding static obstacles. (b) The robot is asked to open the door of the cabinet.
 
 ![fig4 in paper](./img/s_fig8.png)
+
 Figure 4: The trajectories of mobile manipulation for
 completing Task 1. This task is characterized by mobile manipulation in a confined space. The robot should
 have good maneuverability for collision avoidance.
 
 ![fig5 in paper](./img/s_fig6.png)
+
 Figure 5: Task 2 requires the robot to move across different rooms to complete a pick-and-place task.
 In addition, the robot is asked to open a door before going from one room to another. This task is characterized by long-horizon and multi-
 skill mobile manipulation.
