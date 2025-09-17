@@ -18,14 +18,19 @@ Q_{R,t+1}(o,a;g) &= R^+(o,a;g) + \omega R(o,a;g) + \gamma \mathbb{E}_{o' \sim \m
 $$
 $$
 \begin{aligned}
-Q_{R,t+1}(o,a;g) &= R^+(o,a;g) + \omega Q^{*}(o,a;g) - \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} - \omega Q^{*}(o,a;g) \\
+&= R^+(o,a;g) + \omega Q^{*}(o,a;g) - \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} - \omega Q^{*}(o,a;g) \\
 &\quad + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) + \omega' \log Z_{o'} - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right], \tag{6b}
 \end{aligned}
 $$
 
 $$
+\begin{aligned}
 &= R^+(o,a;g) - \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} + \omega' \gamma \mathbb{E}_{o'} \log Z_{o'} \\
-&\quad + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right], \tag{6c}\\
+&\quad + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right], \tag{6c}
+\end{aligned}
+$$
+$$
+\begin{aligned}
 &= R^+(o,a;g) + \gamma \mathbb{E}_{o'} \left[ \mathbb{E}_{a' \sim \hat{\pi}} \left[ Q_{R^+,t}(o',a';g) + \omega' \log \pi(a' \mid o',g) - \hat{\alpha} \log \hat{\pi}(a' \mid o',g) \right] \right]. \tag{6d}
 \end{aligned}
 $$
